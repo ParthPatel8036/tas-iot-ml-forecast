@@ -72,8 +72,9 @@ tas-iot-ml-forecast/        # (repo root)
 | `train.php`            | GET    | —                                | Train a simple model       |
 | `predict.php`          | GET    | features (e.g. `temp`, `lux`, …) | Return predicted value     |
 
-🧭 Architecture
+## 🧭 Architecture
 
+```mermaid
 flowchart LR
   subgraph Device
     A[Sensor/Emulator] -->|HTTP GET ?temp&lux&time| B[recordtemp.php]
@@ -91,6 +92,7 @@ flowchart LR
     I[index.html (CanvasJS)] -->|AJAX| E
     I -->|AJAX| F
   end
+```
 
 
 📸 Screenshots
