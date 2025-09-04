@@ -12,7 +12,7 @@ Frontend charts use **CanvasJS**. Backend endpoints are **PHP**; a tiny **Python
 
 ---
 
-## ✨ Features
+✨ Features
 - 📡 HTTP endpoints to record & view readings
 - 📊 Dashboard with charts (CanvasJS)
 - 🧠 Simple train / predict endpoints
@@ -21,7 +21,7 @@ Frontend charts use **CanvasJS**. Backend endpoints are **PHP**; a tiny **Python
 
 ---
 
-## 🗂 Project structure (high-level)
+🗂 Project structure (high-level)
 
 ```text
 tas-iot-ml-forecast/        # (repo root)
@@ -46,7 +46,7 @@ tas-iot-ml-forecast/        # (repo root)
 
 ---
 
-## ▶️ Run locally (XAMPP on Windows)
+▶️ Run locally (XAMPP on Windows)
 1. Install **XAMPP**, start **Apache**.  
 2. Copy this folder into:
 
@@ -61,7 +61,10 @@ tas-iot-ml-forecast/        # (repo root)
 4. Python simulator:
    ```bash
    python iot_device.py
+   ```
 
+   ---
+   
 🔌 Endpoints (example)
 
 | Endpoint               | Method | Query params                     | Purpose                    |
@@ -72,7 +75,9 @@ tas-iot-ml-forecast/        # (repo root)
 | `train.php`            | GET    | —                                | Train a simple model       |
 | `predict.php`          | GET    | features (e.g. `temp`, `lux`, …) | Return predicted value     |
 
-## 🧭 Architecture
+---
+
+🧭 Architecture
 
 ```mermaid
 flowchart LR
@@ -89,15 +94,17 @@ flowchart LR
   end
 
   subgraph UI[Browser]
-    I[index.html (CanvasJS)] -->|AJAX| E
+    I["index.html (CanvasJS)"] -->|AJAX| E
     I -->|AJAX| F
   end
+
 ```
-
-
+---
 📸 Screenshots
 
 <table> <tr> <td align="center"><img src="screenshots/dashboard.png" width="280" alt="Dashboard"/><div><sub>dashboard.png</sub></div></td> <td align="center"><img src="screenshots/table_view.png" width="280" alt="Table view"/><div><sub>table_view.png</sub></div></td> <td align="center"><img src="screenshots/predict.png" width="280" alt="Predict endpoint"/><div><sub>predict.png</sub></div></td> </tr> </table>
+
+---
 
 🎥 Demo video
 
@@ -105,11 +112,15 @@ flowchart LR
 
 If the inline player doesn’t show, view/download directly: media/demo.mp4
 
+---
+
 🔒 Security
 
 • Don’t commit secrets / service accounts.
 • Keep large/raw data out of git (e.g., WeatherData/ is ignored).
 • Add basic auth/token & rate-limiting if exposing endpoints publicly.
+
+---
 
 📄 License
 
