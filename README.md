@@ -102,15 +102,30 @@ flowchart LR
 ---
 📸 Screenshots
 
-<table> <tr> <td align="center"><img src="screenshots/dashboard.png" width="280" alt="Dashboard"/><div><sub>dashboard.png</sub></div></td> <td align="center"><img src="screenshots/table_view.png" width="280" alt="Table view"/><div><sub>table_view.png</sub></div></td> <td align="center"><img src="screenshots/predict.png" width="280" alt="Predict endpoint"/><div><sub>predict.png</sub></div></td> </tr> </table>
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/display.png" width="380" alt="Latest reading view"/>
+      <div><sub>screenshots/display.png</sub></div>
+    </td>
+    <td align="center">
+      <img src="screenshots/browser.png" width="380" alt="Dashboard in browser"/>
+      <div><sub>screenshots/browser.png</sub></div>
+    </td>
+    <td align="center">
+      <img src="screenshots/graph.png" width="380" alt="Chart view"/>
+      <div><sub>screenshots/graph.png</sub></div>
+    </td>
+  </tr>
+</table>
 
 ---
 
 🎥 Demo video
 
-<video src="media/demo.mp4" width="720" controls poster="screenshots/dashboard.png"></video>
+<video src="media/demo.mp4" width="720" controls poster="screenshots/graph.png"></video>
 
-If the inline player doesn’t show, view/download directly: media/demo.mp4
+If the inline player doesn’t show, view/download directly: [media/demo.mp4](media/demo.mp4)
 
 ---
 
