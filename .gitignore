@@ -1,0 +1,25 @@
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# PHP vendors (if you ever add Composer)
+vendor/
+
+# Big raw data / generated artifacts
+WeatherData/
+models/
+utils/__pycache__/
+__pycache__/
+
+# Logs & temporary XMLs (keep the example file)
+*_data.xml
+*_date.xml
+_log.xml
+tempData.xml
+!tempData_example.xml
+
+# Node/Python if present later
+node_modules/
+.venv/
+.env

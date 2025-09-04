@@ -1,0 +1,23 @@
+# Normalize line endings
+* text=auto eol=lf
+
+# Treat images/binaries properly
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.mp4 binary
+*.zip binary
+
+# Show real languages in the right-side bar
+*.php linguist-language=PHP
+*.html linguist-language=HTML
+*.js   linguist-language=JavaScript
+*.py   linguist-language=Python
+
+# Keep docs & media out of language stats
+*.md               linguist-documentation
+screenshots/**     linguist-documentation
+media/**           linguist-documentation
+vendor/**          linguist-vendored
+WeatherData/**     linguist-vendored
