@@ -139,5 +139,5 @@ If the inline player doesn’t show, view/download directly: [media/demo.mp4](me
 
 📄 License
 
-This project is licensed under MIT — see LICENSE.
+This project is licensed under MIT - see LICENSE.
 CanvasJS is © their authors and may have separate terms for redistribution.
