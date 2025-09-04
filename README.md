@@ -1,4 +1,4 @@
-# TAS IoT Weather + ML Forecast ⛅📈
+➼ TAS IoT Weather + ML Forecast ⛅📈
 
 [![Stack](https://img.shields.io/badge/Stack-PHP%20%7C%20Python%20%7C%20CanvasJS-blue)](#)
 [![Transport](https://img.shields.io/badge/Transport-HTTP%20GET-green)](#)
@@ -22,22 +22,27 @@ Frontend charts use **CanvasJS**. Backend endpoints are **PHP**; a tiny **Python
 ---
 
 ## 🗂 Project structure (high-level)
-Assignment 2/
-├─ canvasjs3.6/ # charting library (frontend)
-├─ models/ # (optional) trained models / artifacts
-├─ utils/ # helpers (if provided)
-├─ WeatherData/ # raw/large datasets (ignored in git)
-├─ index.html # dashboard (charts)
-├─ index.php # server landing (optional)
-├─ recordtemp.php # ingest endpoint (?value=...&...)
-├─ displaytemp.php # show latest value
-├─ convertXMLtoJSON.php # turns XML log into JSON
-├─ predict.php # ML predict
-├─ train.php # ML train
-├─ iot_device.py # Python client to send readings
-├─ tempData_example.xml # sample data format
-├─ screenshots/ # images used in README
-└─ media/ # demo video (use Git LFS if >100MB)
+
+```text
+tas-iot-ml-forecast/        # (repo root)
+├─ canvasjs3.6/             # charting library (frontend)
+├─ models/                  # (optional) trained models / artifacts
+├─ utils/                   # helpers (if provided)
+├─ WeatherData/             # raw/large datasets (ignored in git)
+├─ data/
+│  └─ cleaned_weather.csv   # sample CSV used by ML (if present)
+├─ index.html               # dashboard (charts)
+├─ index.php                # server landing (optional)
+├─ recordtemp.php           # ingest endpoint (?temp=...&lux=...&time=...)
+├─ displaytemp.php          # show latest value
+├─ convertXMLtoJSON.php     # turns XML log into JSON for charts
+├─ train.php                # ML training endpoint
+├─ predict.php              # ML prediction endpoint
+├─ iot_device.py            # Python client to send readings
+├─ tempData_example.xml     # sample XML format
+├─ screenshots/             # images used in README (optional)
+└─ media/                   # demo video (use Git LFS if >100MB)
+```
 
 ---
 
@@ -67,6 +72,27 @@ Assignment 2/
 | `train.php`            | GET    | —                                | Train a simple model       |
 | `predict.php`          | GET    | features (e.g. `temp`, `lux`, …) | Return predicted value     |
 
+🧭 Architecture
+
+flowchart LR
+  subgraph Device
+    A[Sensor/Emulator] -->|HTTP GET ?temp&lux&time| B[recordtemp.php]
+  end
+
+  subgraph Server[Apache + PHP]
+    B --> D[(XML/CSV Log)]
+    E[convertXMLtoJSON.php] --> D
+    F[displaytemp.php] --> D
+    G[train.php] --> D
+    H[predict.php] --> D
+  end
+
+  subgraph UI[Browser]
+    I[index.html (CanvasJS)] -->|AJAX| E
+    I -->|AJAX| F
+  end
+
+
 📸 Screenshots
 
 <table> <tr> <td align="center"><img src="screenshots/dashboard.png" width="280" alt="Dashboard"/><div><sub>dashboard.png</sub></div></td> <td align="center"><img src="screenshots/table_view.png" width="280" alt="Table view"/><div><sub>table_view.png</sub></div></td> <td align="center"><img src="screenshots/predict.png" width="280" alt="Predict endpoint"/><div><sub>predict.png</sub></div></td> </tr> </table>
@@ -79,10 +105,11 @@ If the inline player doesn’t show, view/download directly: media/demo.mp4
 
 🔒 Security
 
-Don’t commit secrets; keep large/raw data out of git (e.g., WeatherData/ is ignored).
-
-Add basic auth/token and rate limiting if you ever expose endpoints publicly.
+• Don’t commit secrets / service accounts.
+• Keep large/raw data out of git (e.g., WeatherData/ is ignored).
+• Add basic auth/token & rate-limiting if exposing endpoints publicly.
 
 📄 License
 
-MIT — see LICENSE
+This project is licensed under MIT — see LICENSE.
+CanvasJS is © their authors and may have separate terms for redistribution.
